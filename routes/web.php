@@ -112,3 +112,16 @@ Route::get('/cars/{make}/{model}/{cylinders}', function ($make, $model, $cylinde
     return "The car you selected is a " . $make . " " . $model . " with " . $cylinders . " cylinders." ;
 })->whereAlphaNumeric(['car', 'model'])
     ->whereNumber('cylinders');
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Passing URL Arguments to Views
+ * ----------------------------------------------------------------------------------------------------------------- */
+
+Route::get('/car/{make}/{model}/{option}', function($make, $model, $option) {
+    return view('car', [
+        'make' => $make,
+        'model' => $model,
+        'option' => $option,
+        'user_type' => "admin",
+    ]);
+});
