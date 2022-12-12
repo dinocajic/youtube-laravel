@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,4 +125,16 @@ Route::get('/car/{make}/{model}/{option}', function($make, $model, $option) {
         'option' => $option,
         'user_type' => "admin",
     ]);
+});
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Subdirectories
+ * ----------------------------------------------------------------------------------------------------------------- */
+
+Route::get('/cars', function() {
+    if (View::exists('cars.index')) {
+        return view('cars/index');
+    }
+
+    return null;
 });
