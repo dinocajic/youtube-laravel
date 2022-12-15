@@ -138,3 +138,23 @@ Route::get('/cars', function() {
 
     return null;
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Blade Components
+ * ----------------------------------------------------------------------------------------------------------------- */
+
+Route::get('/cars/my/favorites', function() {
+    return view('cars/favorite', [
+        'cars' => [
+            "2003 Chevy Corvette",
+            "2007 Chevy Corvette",
+            "1999 Nissan Skyline GT-R",
+            "2021 Nissan GT-R",
+            "2022 Porsche 911 GT3",
+            "1994 Toyota Supra 2JZGTE",
+            "1989 Nissan 240SX Hatchback",
+            "2019 Subaru WRX STi",
+            "1998 Dodge Viper GTS-R",
+        ]
+    ]);
+});
