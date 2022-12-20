@@ -158,3 +158,24 @@ Route::get('/cars/my/favorites', function() {
         ]
     ]);
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Blade Components Digging Deeper
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/my-favorite-car', function() {
+    return view('cars/car', [
+        'car' => 'Subaru WRX STi',
+    ]);
+});
+
+Route::get('/my-favorite-car/with-htmlspecialchars', function() {
+    return view('cars/car', [
+        'car' => '<script>alert("Subaru WRX STi");</script>',
+    ]);
+});
+
+Route::get('/my-favorite-car/without-htmlspecialchars', function() {
+    return view('cars/car-alert', [
+        'car' => '<script>alert("Subaru WRX STi");</script>',
+    ]);
+});
