@@ -179,3 +179,24 @@ Route::get('/my-favorite-car/without-htmlspecialchars', function() {
         'car' => '<script>alert("Subaru WRX STi");</script>',
     ]);
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * If and Switch
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/car-if-directive/{year}', function($year) {
+    return view('if-directive/gtr-if', [
+        'year' => $year,
+    ]);
+});
+
+Route::get('/car-elseif-directive/{year}', function($year) {
+    return view('if-directive/gtr-elseif', [
+        'year' => $year,
+    ]);
+});
+
+Route::get('/car-switch-directive/{year}', function($year) {
+    return view('switch-directive/gtr-switch', [
+        'year' => $year,
+    ]);
+});
