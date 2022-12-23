@@ -220,3 +220,11 @@ Route::get('/loops/foreach', function() {
         ],
     ]);
 });
+
+Route::get('/loops/forelse', function() {
+    return view('loops/forelse-loop', [
+        "things_to_buy" => [],
+    ]);
+});
+
+
