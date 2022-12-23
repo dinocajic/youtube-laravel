@@ -209,3 +209,14 @@ Route::get('/loops/for/{value}', function($value) {
         'value' => $value,
     ]);
 });
+
+Route::get('/loops/foreach', function() {
+    return view('loops/foreach-loop', [
+        "things_to_buy" => [
+            "meat shredder claws",
+            "taco sleeping bag",
+            "tortilla toaster",
+            "the keyboard waffle iron"
+        ],
+    ]);
+});
