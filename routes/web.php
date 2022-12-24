@@ -227,4 +227,9 @@ Route::get('/loops/forelse', function() {
     ]);
 });
 
-
+Route::get('/loops/while/{start}/{finish}', function($start, $finish) {
+    return view('loops/while-loop', [
+        'start' => $start,
+        'finish' => $finish,
+    ]);
+});
