@@ -233,3 +233,36 @@ Route::get('/loops/while/{start}/{finish}', function($start, $finish) {
         'finish' => $finish,
     ]);
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Loop Variable
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/loops/foreach-loop-variable', function() {
+    return view('loops/foreach-loop-variable', [
+        "cars_to_buy" => [
+            "1999 Nissan Skyline GT-R",
+            "1989 Nissan 240sx",
+            "2022 Porsche 911 GT3",
+            "1994 Toyota Supra 2JZGTE"
+        ],
+    ]);
+});
+
+Route::get('/loops/foreach-loop-variable-nested', function() {
+    return view('loops/foreach-loop-variable-nested', [
+        "cars" => [
+            "1999 Nissan Skyline GT-R" => [
+                "specs" => [1000, "Manual"]
+            ],
+            "1989 Nissan 240sx" => [
+                "specs" => [500, "Manual"]
+            ],
+            "2022 Porsche 911 GT3" => [
+                "specs" => [650, "Manual"]
+            ],
+            "1994 Toyota Supra 2JZGTE" => [
+                "specs" => [1000, "Manual"]
+            ],
+        ],
+    ]);
+});
