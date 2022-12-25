@@ -266,3 +266,19 @@ Route::get('/loops/foreach-loop-variable-nested', function() {
         ],
     ]);
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Including Subviews
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/cameras/{camera}', function($camera) {
+    return view('cameras/camera', [
+        'make' => $camera
+    ]);
+});
+
+Route::get('/best-camera/{camera}', function($camera) {
+    return view('cameras/best-camera', [
+        'title' => "Best Camera",
+        'make' => $camera
+    ]);
+});
