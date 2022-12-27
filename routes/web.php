@@ -282,3 +282,16 @@ Route::get('/best-camera/{camera}', function($camera) {
         'make' => $camera
     ]);
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Raw PHP in Blade Files
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/computers/apple/macbook-pro', function() {
+    return view('computers/show', [
+        'page_title' => 'Raw PHP',
+        'product_sku' => 'B0B3C5HNXJ',
+        'product_brand' => 'Apple',
+        'product_model' => 'MacBook Pro Laptop with M2 Chip',
+        'product_price' => 1299,
+    ]);
+});
