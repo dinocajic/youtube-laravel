@@ -295,3 +295,18 @@ Route::get('/computers/apple/macbook-pro', function() {
         'product_price' => 1299,
     ]);
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Blade Layouts Using Template Inheritance
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/template-inheritance', function() {
+    return view('template-inheritance/home', [
+        'title' => "Template Inheritance",
+    ]);
+});
+
+Route::get('/template-inheritance/contact', function() {
+    return view('template-inheritance/contact', [
+        'title' => "Contact Page",
+    ]);
+});
