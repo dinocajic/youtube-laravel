@@ -310,3 +310,12 @@ Route::get('/template-inheritance/contact', function() {
         'title' => "Contact Page",
     ]);
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Components Intro
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/components/header-test', function() {
+    return view('component-test/header-test', [
+        'title' => "Header Test",
+    ]);
+});
