@@ -314,8 +314,17 @@ Route::get('/template-inheritance/contact', function() {
 /** -----------------------------------------------------------------------------------------------------------------
  * Components Intro
  * ----------------------------------------------------------------------------------------------------------------- */
-Route::get('/components/header-test', function() {
-    return view('component-test/header-test', [
+Route::get('/components/breakdown-test', function() {
+    return view('component-test/breakdown-test', [
         'title' => "Header Test",
+    ]);
+});
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Components Breakdown
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/components-breakdown', function() {
+    return view('component-breakdown/app', [
+        'title' => 'Component Breakdown',
     ]);
 });
