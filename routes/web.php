@@ -328,3 +328,12 @@ Route::get('/components-breakdown', function() {
         'title' => 'Component Breakdown',
     ]);
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Component Layout
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/component-layout', function() {
+    return view('layouts-test/index', [
+        'title' => 'Component Layout',
+    ]);
+});
