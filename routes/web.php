@@ -330,10 +330,25 @@ Route::get('/components-breakdown', function() {
 });
 
 /** -----------------------------------------------------------------------------------------------------------------
+ * Component Layout Prep-Work
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/component-layout-prep', function() {
+    return view('layouts-test/index', [
+        'title' => 'Component Layout',
+    ]);
+});
+
+/** -----------------------------------------------------------------------------------------------------------------
  * Component Layout
  * ----------------------------------------------------------------------------------------------------------------- */
 Route::get('/component-layout', function() {
-    return view('layouts-test/index', [
+    return view('home/index', [
         'title' => 'Component Layout',
+    ]);
+});
+
+Route::get('/component-layout/contact', function() {
+    return view('contact/index', [
+        'title' => 'Component Layout - Contact',
     ]);
 });
