@@ -352,3 +352,5 @@ Route::get('/component-layout/contact', function() {
         'title' => 'Component Layout - Contact',
     ]);
 });
+
+Route::redirect('/here', '/contact');
