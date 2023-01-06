@@ -353,4 +353,24 @@ Route::get('/component-layout/contact', function() {
     ]);
 });
 
+/** -----------------------------------------------------------------------------------------------------------------
+ * Redirect
+ * ----------------------------------------------------------------------------------------------------------------- */
 Route::redirect('/here', '/contact');
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Named Routes
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/home-named', function() {
+    return view('home-named/index', [
+        'title' => 'Named Routes',
+    ]);
+});
+
+Route::get('/get-started', function() {
+    return "Get Started";
+})->name('getting-started');
+
+Route::get('/learn-more/{id}/department/{department}', function($id, $department) {
+    return "Learn More: " . $id . " for " . $department;
+})->name('learn-more');
