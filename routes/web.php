@@ -374,3 +374,35 @@ Route::get('/get-started', function() {
 Route::get('/learn-more/{id}/department/{department}', function($id, $department) {
     return "Learn More: " . $id . " for " . $department;
 })->name('learn-more');
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Route Groups
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::prefix('admin/{name}')->name('admin.')->group(function($name) {
+    Route::get('/contact', function($name) {
+        return "Admin - Contact " . $name;
+    })->name('contact');
+
+    Route::get('/dashboard', function() {
+        return "Admin - Dashboard";
+    })->name('dashboard');
+
+    Route::get('/sales', function() {
+        return "Admin - Sales";
+    })->name('sales');
+
+    Route::get('/marketing', function() {
+        return "Admin - Marketing";
+    })->name('marketing');
+});
+
+
+
+
+
+
+
+
+
+
+
