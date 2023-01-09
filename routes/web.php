@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
+use App\Http\Controllers\TestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -396,13 +398,28 @@ Route::prefix('admin/{name}')->name('admin.')->group(function($name) {
     })->name('marketing');
 });
 
+/** -----------------------------------------------------------------------------------------------------------------
+ * Controllers Intro
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/test-controller/index', [TestController::class, 'index']);
+Route::get('/test-controller/show', [TestController::class, 'show']);
 
+Route::get('/test-controller/index', function() {
+    return [
+        [
+            "make" => "Chevrolet",
+            "model" => "Corvette",
+        ],
+        [
+            "make" => "Porsche",
+            "model" => "911 GT3",
+        ],
+    ];
+});
 
-
-
-
-
-
-
-
-
+Route::get('/test-controller/show', function() {
+    return [
+        "make" => "Porsche",
+        "model" => "911 GT3",
+    ];
+});
