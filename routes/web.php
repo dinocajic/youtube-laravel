@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\SacTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -403,5 +404,14 @@ Route::prefix('admin/{name}')->name('admin.')->group(function($name) {
  * ----------------------------------------------------------------------------------------------------------------- */
 Route::get('/test-controller/index', [TestController::class, 'index']);
 Route::get('/test-controller/show', [TestController::class, 'show']);
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Arguments to Controllers
+ * ----------------------------------------------------------------------------------------------------------------- */
 Route::get('/test-controller/edit/{id}', [TestController::class, 'edit']);
 Route::get('/test-controller/delete/{id}/name/{name}', [TestController::class, 'delete']);
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Single Action Controller
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/test-single-action-controller/{name}', SacTestController::class);
