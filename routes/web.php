@@ -403,3 +403,5 @@ Route::prefix('admin/{name}')->name('admin.')->group(function($name) {
  * ----------------------------------------------------------------------------------------------------------------- */
 Route::get('/test-controller/index', [TestController::class, 'index']);
 Route::get('/test-controller/show', [TestController::class, 'show']);
+Route::get('/test-controller/edit/{id}', [TestController::class, 'edit']);
+Route::get('/test-controller/delete/{id}/name/{name}', [TestController::class, 'delete']);

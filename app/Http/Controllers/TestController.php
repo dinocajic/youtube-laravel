@@ -27,4 +27,14 @@ class TestController extends Controller
             "model" => "911 GT3",
         ];
     }
+
+    public function edit($id)
+    {
+        return "If we were editing, this would be for " . $id;
+    }
+
+    public function delete($user_id, $user_name)
+    {
+        return "Record " . $user_id . " has been deleted for " . $user_name;
+    }
 }
