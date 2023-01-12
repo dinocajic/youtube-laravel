@@ -415,3 +415,7 @@ Route::get('/test-controller/delete/{id}/name/{name}', [TestController::class, '
  * Single Action Controller
  * ----------------------------------------------------------------------------------------------------------------- */
 Route::get('/test-single-action-controller/{name}', SacTestController::class);
+
+Route::get('/test', function() {
+    return \App\Models\User::all();
+});
