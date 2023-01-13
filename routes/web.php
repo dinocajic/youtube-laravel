@@ -416,6 +416,11 @@ Route::get('/test-controller/delete/{id}/name/{name}', [TestController::class, '
  * ----------------------------------------------------------------------------------------------------------------- */
 Route::get('/test-single-action-controller/{name}', SacTestController::class);
 
-Route::get('/test', function() {
-    return \App\Models\User::all();
-});
+/** -----------------------------------------------------------------------------------------------------------------
+ * Model
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/test-model/store', [TestController::class, 'store']);
+Route::get('/test-model/', [TestController::class, 'index']);
+Route::get('/test-model/show/{id}', [TestController::class, 'show']);
+Route::get('/test-model/update/{id}', [TestController::class, 'update']);
+Route::get('/test-model/delete/{id}', [TestController::class, 'destroy']);
