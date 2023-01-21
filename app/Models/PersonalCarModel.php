@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class PersonalCarModel extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name', 'slug',
+    ];
+
+    public function cars()
+    {
+        return $this->hasMany(PersonalCar::class, 'personal_car_brand_id', 'id');
+    }
 }
