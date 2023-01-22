@@ -22,4 +22,9 @@ class PersonalCar extends Model
     {
         return $this->belongsTo(PersonalCarModel::class, 'personal_car_model_id', 'id');
     }
+
+    public function images()
+    {
+        return $this->belongsToMany(Image::class);
+    }
 }

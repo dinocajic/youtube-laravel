@@ -12,4 +12,9 @@ class Image extends Model
     protected $fillable = [
         'url', 'alt',
     ];
+
+    public function cars()
+    {
+        return $this->belongsToMany(PersonalCar::class);
+    }
 }
