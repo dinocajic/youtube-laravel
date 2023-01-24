@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\View;
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\SacTestController;
+use App\Http\Controllers\PersonalCarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -424,3 +425,13 @@ Route::get('/test-model/', [TestController::class, 'index']);
 Route::get('/test-model/show/{id}', [TestController::class, 'show']);
 Route::get('/test-model/update/{id}', [TestController::class, 'update']);
 Route::get('/test-model/delete/{id}', [TestController::class, 'destroy']);
+
+Route::prefix('/personalcars')->group(function() {
+    Route::get('/',          [PersonalCarController::class, 'index']);
+    Route::get('/create',    [PersonalCarController::class, 'create']);
+    Route::post('/',         [PersonalCarController::class, 'store']);
+    Route::get('/{id}',      [PersonalCarController::class, 'show']);
+    Route::get('/{id}/edit', [PersonalCarController::class, 'edit']);
+    Route::put('/{id}',      [PersonalCarController::class, 'update']);
+    Route::delete('/{id}',   [PersonalCarController::class, 'destroy']);
+});
