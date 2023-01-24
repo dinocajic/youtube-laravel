@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PersonalCar;
 use Illuminate\Http\Request;
 
 class PersonalCarController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        // get data from model
-        // send data to view
-        // return view to user
+        $cars = PersonalCar::with(['brand', 'model'])->orderBy('year', 'desc')->get();
+
+        return view('personalcars/index', [
+            'title' => 'Personal Cars',
+            'cars' => $cars,
+        ]);
     }
 
     /**
