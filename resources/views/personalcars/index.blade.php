@@ -20,6 +20,9 @@
                             <th scope="col" class="px-6 py-3">
                                 Current Value
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                View
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +42,11 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $car->current_value }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="/personalcars/{{ $car->id }}">
+                                        Show Car
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

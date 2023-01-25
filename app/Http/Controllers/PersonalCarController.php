@@ -48,13 +48,15 @@ class PersonalCarController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        // Look up resource with id
-        // Send data to show view
-        // Return view to user through route
+        $car = PersonalCar::with(['brand', 'model', 'images'])->find($id);
+
+        return view('personalcars/show', [
+            'title' => $car->year . " " . $car->brand->name . " " . $car->model->name,
+            'car' => $car,
+        ]);
     }
 
     /**

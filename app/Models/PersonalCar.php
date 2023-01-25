@@ -35,4 +35,32 @@ class PersonalCar extends Model
             get: fn($value) => "$" . number_format($value / 100, 2, '.', ','),
         );
     }
+
+    protected function purchaseAmount(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => "$" . number_format($value / 100, 2, '.', ','),
+        );
+    }
+
+    protected function salesAmount(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => ($value == 0 ? "N/A" : "$" . number_format($value / 100, 2, '.', ',')),
+        );
+    }
+
+    protected function isManual(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => ($value == 1 ? "Manual" : "Automatic"),
+        );
+    }
+
+    protected function dateSold(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => ($value == null ? "N/A" : $value),
+        );
+    }
 }
