@@ -1,5 +1,5 @@
 <x-layouts.app title="{{ $title }}">
-    <div class="flex bg-white mt-12" style="height:600px;">
+    <div class="flex bg-white mt-12">
         <div class="items-center text-center lg:text-left px-8 md:px-12 lg:w-full">
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -55,4 +55,7 @@
             </div>
         </div>
     </div>
+    <a href="/personalcars/create">
+        <button class="block bg-green-400 hover:bg-green-600 text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Add New Car</button>
+    </a>
 </x-layouts.app>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\PersonalCar;
+use App\Models\PersonalCarBrand;
+use App\Models\PersonalCarModel;
+use Faker\Provider\Person;
 use Illuminate\Http\Request;
 
 class PersonalCarController extends Controller
@@ -22,25 +25,51 @@ class PersonalCarController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        // Return the form to the user
+        return view('personalcars/create', [
+            'title' => 'Personal Cars'
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        // get data from form
         // validate data
-        // insert data into table
+
+        $brand = PersonalCarBrand::firstOrCreate([
+            'name' => $request->make,
+        ], [
+            'slug' => str_replace(" ", "-", strtolower($request->make))
+        ]);
+
+        $model = PersonalCarModel::firstOrCreate([
+            'name' => $request->model,
+        ], [
+            'slug' => str_replace(" ", "-", strtolower($request->model))
+        ]);
+
+        $car = new PersonalCar;
+        $car->year            = $request->year;
+        $car->brand()->associate($brand);
+        $car->model()->associate($model);
+        $car->is_manual       = $request->is_manual;
+        $car->exterior_color  = $request->exterior_color;
+        $car->purchase_amount = $request->purchase_amount;
+        $car->current_value   = $request->current_value;
+        $car->sales_amount    = $request->sales_amount == 0 ? 0 : $request->sales_amount;
+        $car->date_purchased  = $request->date_purchased;
+        $car->date_sold       = $request->date_sold;
+
+        $car->save();
+
+        return redirect()->to('/personalcars/');
+
         // return message that insertion was successful
     }
 
