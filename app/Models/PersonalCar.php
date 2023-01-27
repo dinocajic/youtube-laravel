@@ -33,6 +33,7 @@ class PersonalCar extends Model
     {
         return Attribute::make(
             get: fn($value) => "$" . number_format($value / 100, 2, '.', ','),
+            set: fn($value) => $value * 100,
         );
     }
 
@@ -40,6 +41,7 @@ class PersonalCar extends Model
     {
         return Attribute::make(
             get: fn($value) => "$" . number_format($value / 100, 2, '.', ','),
+            set: fn($value) => $value * 100,
         );
     }
 
@@ -47,6 +49,7 @@ class PersonalCar extends Model
     {
         return Attribute::make(
             get: fn($value) => ($value == 0 ? "N/A" : "$" . number_format($value / 100, 2, '.', ',')),
+            set: fn($value) => $value * 100,
         );
     }
 
