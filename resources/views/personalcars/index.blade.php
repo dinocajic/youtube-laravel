@@ -2,6 +2,11 @@
     <div class="flex bg-white mt-12">
         <div class="items-center text-center lg:text-left px-8 md:px-12 lg:w-full">
             <div class="relative overflow-x-auto">
+                @if (session('status'))
+                    <div class="block bg-green-200 p-4">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>

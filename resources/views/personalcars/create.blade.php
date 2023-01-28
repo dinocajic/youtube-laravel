@@ -3,6 +3,13 @@
         <div class="flex justify-center items-center w-full">
             <div class="w-1/2 bg-white rounded shadow-2xl p-8 m-4">
                 <h1 class="block w-full text-center text-gray-800 text-2xl font-bold mb-6">Add New Car</h1>
+                @if ($errors->any())
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
                 <form action="/personalcars/" method="post">
                     @csrf
                     <div class="flex flex-col mb-4">

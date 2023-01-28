@@ -40,7 +40,18 @@ class PersonalCarController extends Controller
      */
     public function store(Request $request)
     {
-        // validate data
+        $validated = $request->validate([
+            'year' => 'required|integer',
+            'make' => 'required|max:255',
+            'model' => 'required|max:255',
+            'is_manual' => 'required|boolean',
+            'exterior_color' => 'required|max:255',
+            'purchase_amount' => 'numeric',
+            'current_value' => 'numeric',
+            'sales_amount' => 'numeric|nullable',
+            'date_purchased' => 'required|date',
+            'date_sold' => 'date|nullable',
+        ]);
 
         $brand = PersonalCarBrand::firstOrCreate([
             'name' => $request->make,
@@ -68,9 +79,7 @@ class PersonalCarController extends Controller
 
         $car->save();
 
-        return redirect()->to('/personalcars/');
-
-        // return message that insertion was successful
+        return redirect()->to('/personalcars/')->with('status', 'Your car has been added.');
     }
 
     /**
