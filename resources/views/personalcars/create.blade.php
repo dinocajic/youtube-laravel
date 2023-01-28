@@ -10,7 +10,7 @@
                         @endforeach
                     </ul>
                 @endif
-                <form action="/personalcars/" method="post">
+                <form action="/personalcars/" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="flex flex-col mb-4">
                         <label class="mb-2 font-bold text-lg text-gray-900" for="year">Year</label>

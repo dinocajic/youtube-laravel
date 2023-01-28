@@ -4,7 +4,7 @@
             <div class="md:flex items-center -mx-10">
                 <div class="w-full md:w-1/2 px-10 mb-10 md:mb-0">
                     <div class="relative">
-                        <img src="https://pngimg.com/uploads/chevrolet/%D1%81hevrolet_PNG16.png" class="w-full relative z-10" alt="">
+                        <img src="{{ asset( 'storage/' . $car->images[0]->url ) }}" class="w-full relative z-10" alt="">
                         <div class="border-4 border-blue-200 absolute top-10 bottom-10 left-10 right-10 z-0"></div>
                     </div>
                 </div>

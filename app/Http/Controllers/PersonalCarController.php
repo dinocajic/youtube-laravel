@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\PersonalCar;
 use App\Models\PersonalCarBrand;
 use App\Models\PersonalCarModel;
@@ -40,6 +41,7 @@ class PersonalCarController extends Controller
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'year' => 'required|integer',
             'make' => 'required|max:255',
@@ -51,7 +53,10 @@ class PersonalCarController extends Controller
             'sales_amount' => 'numeric|nullable',
             'date_purchased' => 'required|date',
             'date_sold' => 'date|nullable',
+            'file' => 'image|mimes:jpg,jpeg,png,gif|max:2048|nullable',
         ]);
+
+        $image_path = $request->file('file')->store('images', 'public');
 
         $brand = PersonalCarBrand::firstOrCreate([
             'name' => $request->make,
@@ -63,6 +68,11 @@ class PersonalCarController extends Controller
             'name' => $request->model,
         ], [
             'slug' => str_replace(" ", "-", strtolower($request->model))
+        ]);
+
+        $image = Image::create([
+            'url' => $image_path,
+            'alt' => $request->year . " " . $brand->name . " " . $model->name,
         ]);
 
         $car = new PersonalCar;
@@ -78,6 +88,8 @@ class PersonalCarController extends Controller
         $car->date_sold       = $request->date_sold;
 
         $car->save();
+
+        $car->images()->attach($image);
 
         return redirect()->to('/personalcars/')->with('status', 'Your car has been added.');
     }
