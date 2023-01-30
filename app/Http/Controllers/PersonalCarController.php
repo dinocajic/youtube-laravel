@@ -41,7 +41,6 @@ class PersonalCarController extends Controller
      */
     public function store(Request $request)
     {
-
         $validated = $request->validate([
             'year' => 'required|integer',
             'make' => 'required|max:255',
@@ -56,8 +55,6 @@ class PersonalCarController extends Controller
             'file' => 'image|mimes:jpg,jpeg,png,gif|max:2048|nullable',
         ]);
 
-        $image_path = $request->file('file')->store('images', 'public');
-
         $brand = PersonalCarBrand::firstOrCreate([
             'name' => $request->make,
         ], [
@@ -68,11 +65,6 @@ class PersonalCarController extends Controller
             'name' => $request->model,
         ], [
             'slug' => str_replace(" ", "-", strtolower($request->model))
-        ]);
-
-        $image = Image::create([
-            'url' => $image_path,
-            'alt' => $request->year . " " . $brand->name . " " . $model->name,
         ]);
 
         $car = new PersonalCar;
@@ -89,7 +81,16 @@ class PersonalCarController extends Controller
 
         $car->save();
 
-        $car->images()->attach($image);
+        if ( $request->file('file') !== null ) {
+            $image_path = $request->file('file')->store('images', 'public');
+
+            $image = Image::create([
+                'url' => $image_path,
+                'alt' => $request->year . " " . $brand->name . " " . $model->name,
+            ]);
+
+            $car->images()->attach($image);
+        }
 
         return redirect()->to('/personalcars/')->with('status', 'Your car has been added.');
     }
@@ -113,14 +114,15 @@ class PersonalCarController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        // get resource with the help of the PersonalCar model
-        // send data to edit view
-        // the view injects the data into the form
-        // the view is returned to the user through the route
+        $car = PersonalCar::with(['brand', 'model', 'images'])->find($id);
+
+        return view('personalcars/edit', [
+            'title' => "Edit " . $car->year . " " . $car->brand->name . " " . $car->model->name,
+            'car' => $car,
+        ]);
     }
 
     /**
@@ -128,13 +130,62 @@ class PersonalCarController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        // get data from form
-        // update the resource with the form data
-        // return a success message
+        $validated = $request->validate([
+            'year' => 'required|integer',
+            'make' => 'required|max:255',
+            'model' => 'required|max:255',
+            'is_manual' => 'required|boolean',
+            'exterior_color' => 'required|max:255',
+            'purchase_amount' => 'numeric',
+            'current_value' => 'numeric',
+            'sales_amount' => 'numeric|nullable',
+            'date_purchased' => 'required|date',
+            'date_sold' => 'date|nullable',
+            'file' => 'image|mimes:jpg,jpeg,png,gif|max:2048|nullable',
+        ]);
+
+        $car = PersonalCar::find($id);
+
+        $brand = PersonalCarBrand::firstOrCreate([
+            'name' => $request->make,
+        ], [
+            'slug' => str_replace(" ", "-", strtolower($request->make))
+        ]);
+
+        $model = PersonalCarModel::firstOrCreate([
+            'name' => $request->model,
+        ], [
+            'slug' => str_replace(" ", "-", strtolower($request->model))
+        ]);
+
+        $car->year            = $request->year;
+        $car->brand()->associate($brand);
+        $car->model()->associate($model);
+        $car->is_manual       = $request->is_manual;
+        $car->exterior_color  = $request->exterior_color;
+        $car->purchase_amount = $request->purchase_amount;
+        $car->current_value   = $request->current_value;
+        $car->sales_amount    = $request->sales_amount == 0 ? 0 : $request->sales_amount;
+        $car->date_purchased  = $request->date_purchased;
+        $car->date_sold       = $request->date_sold;
+
+        $car->save();
+
+        if ( $request->file('file') !== null ) {
+            $image_path = $request->file('file')->store('images', 'public');
+
+            $image = Image::create([
+                'url' => $image_path,
+                'alt' => $request->year . " " . $brand->name . " " . $model->name,
+            ]);
+
+            $car->images()->attach($image);
+        }
+
+        return redirect()->to('/personalcars/' . $id . '/edit')->with('status', 'Your car has been updated.');
     }
 
     /**

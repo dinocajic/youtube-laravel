@@ -28,6 +28,9 @@
                             <th scope="col" class="px-6 py-3">
                                 View
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                Edit
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +54,11 @@
                                 <td class="px-6 py-4">
                                     <a href="/personalcars/{{ $car->id }}">
                                         Show Car
+                                    </a>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="/personalcars/{{ $car->id }}/edit">
+                                        Edit Car
                                     </a>
                                 </td>
                             </tr>
