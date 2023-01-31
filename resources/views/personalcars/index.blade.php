@@ -31,6 +31,9 @@
                             <th scope="col" class="px-6 py-3">
                                 Edit
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                Delete
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,6 +63,13 @@
                                     <a href="/personalcars/{{ $car->id }}/edit">
                                         Edit Car
                                     </a>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <form method="post" action="/personalcars/{{ $car->id }}">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

@@ -192,11 +192,11 @@ class PersonalCarController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        // delete the record from the table
-        // return redirect with success message
+        PersonalCar::destroy($id);
+
+        return redirect()->to('/personalcars/')->with('status', 'Your car has been deleted.');
     }
 }
