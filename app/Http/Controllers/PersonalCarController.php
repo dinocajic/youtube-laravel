@@ -6,7 +6,6 @@ use App\Models\Image;
 use App\Models\PersonalCar;
 use App\Models\PersonalCarBrand;
 use App\Models\PersonalCarModel;
-use Faker\Provider\Person;
 use Illuminate\Http\Request;
 
 class PersonalCarController extends Controller
