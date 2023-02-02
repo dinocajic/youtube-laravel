@@ -38,7 +38,7 @@
 
             @foreach( $car->images as $image )
                 <div class="w-80 bg-white p-3">
-                    <img class="h-52 w-full object-cover" src="{{ $image->url }}" alt="{{ $image->alt }}" />
+                    <img class="h-52 w-full object-cover" src="{{ asset( 'storage/' . $image->url ) }}" alt="{{ $image->alt }}" />
                 </div>
             @endforeach
 
