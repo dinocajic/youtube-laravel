@@ -7,6 +7,7 @@ use App\Models\PersonalCar;
 use App\Models\PersonalCarBrand;
 use App\Models\PersonalCarModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PersonalCarController extends Controller
 {
@@ -194,7 +195,15 @@ class PersonalCarController extends Controller
      */
     public function destroy($id)
     {
-        PersonalCar::destroy($id);
+        $car = PersonalCar::find($id);
+
+        foreach($car->images as $image) {
+            Storage::disk('public')->delete( $image->url );
+        }
+
+        $car->images()->delete();
+        $car->images()->detach();
+        $car->destroy($id);
 
         return redirect()->to('/personalcars/')->with('status', 'Your car has been deleted.');
     }
