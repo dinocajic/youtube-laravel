@@ -7,6 +7,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\SacTestController;
 use App\Http\Controllers\PersonalCarController;
 
+use App\Http\Controllers\DependencyInjectionTestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -426,6 +428,9 @@ Route::get('/test-model/show/{id}', [TestController::class, 'show']);
 Route::get('/test-model/update/{id}', [TestController::class, 'update']);
 Route::get('/test-model/delete/{id}', [TestController::class, 'destroy']);
 
+/** -----------------------------------------------------------------------------------------------------------------
+ * Personal Cars Project
+ * ----------------------------------------------------------------------------------------------------------------- */
 Route::prefix('/personalcars')->group(function() {
     Route::get('/',          [PersonalCarController::class, 'index']);
     Route::get('/create',    [PersonalCarController::class, 'create']);
@@ -435,3 +440,9 @@ Route::prefix('/personalcars')->group(function() {
     Route::put('/{id}',      [PersonalCarController::class, 'update']);
     Route::delete('/{id}',   [PersonalCarController::class, 'destroy']);
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Dependency Injection
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/dependency-injection', [DependencyInjectionTestController::class, 'index']);
+Route::get('/dependency-injection/test', [DependencyInjectionTestController::class, 'test']);
