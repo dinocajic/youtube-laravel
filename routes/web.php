@@ -10,6 +10,7 @@ use App\Http\Controllers\PersonalCarController;
 use App\Http\Controllers\DependencyInjectionTestController;
 use Illuminate\Http\Request;
 use App\Services\CapitalizeStringService;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -462,3 +463,15 @@ Route::get('/dependency-route-example/{id}',
         return $id . ": " . $capitalizeStringService->capitalize( $request->input('name') );
     }
 );
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Model Binding - Implicit Binding
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/implicit-binding/{user}', function (User $user) {
+    return $user;
+});
+
+Route::get('/implicit-binding/by-name/{user:name}', function (User $user) {
+    return $user;
+});
+
