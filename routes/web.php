@@ -8,6 +8,8 @@ use App\Http\Controllers\SacTestController;
 use App\Http\Controllers\PersonalCarController;
 
 use App\Http\Controllers\DependencyInjectionTestController;
+use Illuminate\Http\Request;
+use App\Services\CapitalizeStringService;
 
 /*
 |--------------------------------------------------------------------------
@@ -446,3 +448,17 @@ Route::prefix('/personalcars')->group(function() {
  * ----------------------------------------------------------------------------------------------------------------- */
 Route::get('/dependency-injection', [DependencyInjectionTestController::class, 'index']);
 Route::get('/dependency-injection/test', [DependencyInjectionTestController::class, 'test']);
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Dependency Injection
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/dependency-route-example', function (Request $request) {
+    return $request->input('name');
+});
+
+Route::get('/dependency-route-example/{id}',
+    function (Request $request, CapitalizeStringService $capitalizeStringService, $id)
+    {
+        return $id . ": " . $capitalizeStringService->capitalize( $request->input('name') );
+    }
+);
