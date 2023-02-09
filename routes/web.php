@@ -475,3 +475,9 @@ Route::get('/implicit-binding/by-name/{user:name}', function (User $user) {
     return $user;
 });
 
+/** -----------------------------------------------------------------------------------------------------------------
+ * Model Binding - Explicit Binding
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/explicit-binding/{verifiedUser}', function (User $user) {
+    return $user;
+});
