@@ -481,3 +481,13 @@ Route::get('/implicit-binding/by-name/{user:name}', function (User $user) {
 Route::get('/explicit-binding/{verifiedUser}', function (User $user) {
     return $user;
 });
+
+Route::middleware(['throttle:web'])->group(function () {
+    Route::get('/throttle-test-1', function() {
+        return "Throttle Test 1";
+    });
+
+    Route::get('/throttle-test-2', function() {
+        return "Throttle Test 2";
+    });
+});
