@@ -482,6 +482,9 @@ Route::get('/explicit-binding/{verifiedUser}', function (User $user) {
     return $user;
 });
 
+/** -----------------------------------------------------------------------------------------------------------------
+ * Rate Limiting
+ * ----------------------------------------------------------------------------------------------------------------- */
 Route::middleware(['throttle:web'])->group(function () {
     Route::get('/throttle-test-1', function() {
         return "Throttle Test 1";
@@ -490,4 +493,27 @@ Route::middleware(['throttle:web'])->group(function () {
     Route::get('/throttle-test-2', function() {
         return "Throttle Test 2";
     });
+});
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Groups
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::middleware(['throttle:web', 'auth'])->group(function () {
+    Route::get('/throttle-test-3', function() {
+        return "Throttle Test 3";
+    });
+
+    Route::get('/throttle-test-4', function() {
+        return "Throttle Test 4";
+    });
+});
+
+Route::controller(PersonalCarController::class)->group(function () {
+    Route::get('/',          'index');
+    Route::get('/create',    'create');
+    Route::post('/',         'store');
+    Route::get('/{id}',      'show');
+    Route::get('/{id}/edit', 'edit');
+    Route::put('/{id}',      'update');
+    Route::delete('/{id}',   'destroy');
 });
