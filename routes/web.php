@@ -11,6 +11,7 @@ use App\Http\Controllers\DependencyInjectionTestController;
 use Illuminate\Http\Request;
 use App\Services\CapitalizeStringService;
 use App\Models\User;
+use App\Http\Controllers\AnotherDependencyInjectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -496,6 +497,11 @@ Route::middleware(['throttle:web'])->group(function () {
 });
 
 /** -----------------------------------------------------------------------------------------------------------------
+ * Controllers - Dependency Injection through constructor
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/controller-dependency-injection', [AnotherDependencyInjectionController::class, 'index']);
+
+/** -----------------------------------------------------------------------------------------------------------------
  * Groups
  * ----------------------------------------------------------------------------------------------------------------- */
 Route::middleware(['throttle:web', 'auth'])->group(function () {
@@ -517,3 +523,6 @@ Route::controller(PersonalCarController::class)->group(function () {
     Route::put('/{id}',      'update');
     Route::delete('/{id}',   'destroy');
 });
+
+
+
