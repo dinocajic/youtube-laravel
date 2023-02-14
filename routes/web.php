@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Services\CapitalizeStringService;
 use App\Models\User;
 use App\Http\Controllers\AnotherDependencyInjectionController;
+use App\Http\Controllers\MiddlewareTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -500,6 +501,24 @@ Route::middleware(['throttle:web'])->group(function () {
  * Controllers - Dependency Injection through constructor
  * ----------------------------------------------------------------------------------------------------------------- */
 Route::get('/controller-dependency-injection', [AnotherDependencyInjectionController::class, 'index']);
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Middleware Controller
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/controller-middleware-test', [MiddlewareTestController::class, 'index']);
+
+//Route::get('/controller-middleware-test', [MiddlewareTestController::class, 'edit']);
+//
+//Route::middleware(['auth'])->group(function () {
+//    Route::get('/controller-middleware-test', [MiddlewareTestController::class, 'store']);
+//    Route::get('/controller-middleware-test', [MiddlewareTestController::class, 'edit']);
+//    Route::get('/controller-middleware-test', [MiddlewareTestController::class, 'edit']);
+//});
+
+
+
+
+
 
 /** -----------------------------------------------------------------------------------------------------------------
  * Groups
