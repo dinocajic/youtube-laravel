@@ -13,6 +13,7 @@ use App\Services\CapitalizeStringService;
 use App\Models\User;
 use App\Http\Controllers\AnotherDependencyInjectionController;
 use App\Http\Controllers\MiddlewareTestController;
+use App\Http\Controllers\CameraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -515,11 +516,6 @@ Route::get('/controller-middleware-test', [MiddlewareTestController::class, 'ind
 //    Route::get('/controller-middleware-test', [MiddlewareTestController::class, 'edit']);
 //});
 
-
-
-
-
-
 /** -----------------------------------------------------------------------------------------------------------------
  * Groups
  * ----------------------------------------------------------------------------------------------------------------- */
@@ -533,15 +529,15 @@ Route::middleware(['throttle:web', 'auth'])->group(function () {
     });
 });
 
-Route::controller(PersonalCarController::class)->group(function () {
-    Route::get('/',          'index');
-    Route::get('/create',    'create');
-    Route::post('/',         'store');
-    Route::get('/{id}',      'show');
-    Route::get('/{id}/edit', 'edit');
-    Route::put('/{id}',      'update');
-    Route::delete('/{id}',   'destroy');
-});
+//Route::controller(PersonalCarController::class)->group(function () {
+//    Route::get('/',          'index');
+//    Route::get('/create',    'create');
+//    Route::post('/',         'store');
+//    Route::get('/{id}',      'show');
+//    Route::get('/{id}/edit', 'edit');
+//    Route::put('/{id}',      'update');
+//    Route::delete('/{id}',   'destroy');
+//});
 
-
+Route::resource('cameras', CameraController::class);
 
