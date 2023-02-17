@@ -539,5 +539,21 @@ Route::middleware(['throttle:web', 'auth'])->group(function () {
 //    Route::delete('/{id}',   'destroy');
 //});
 
+/** -----------------------------------------------------------------------------------------------------------------
+ * Resources
+ * ----------------------------------------------------------------------------------------------------------------- */
 Route::resource('cameras', CameraController::class);
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Partial Resource Routes
+ * ----------------------------------------------------------------------------------------------------------------- */
+//Route::prefix('/camera')->group(function() {
+//    Route::get('/',          [CameraController::class, 'index']);
+//    Route::get('/create',    [CameraController::class, 'create']);
+//    Route::post('/',         [CameraController::class, 'store']);
+//    Route::get('/{id}',      [CameraController::class, 'show']);
+//    Route::get('/{id}/edit', [CameraController::class, 'edit']);
+//    Route::put('/{id}',      [CameraController::class, 'update']);
+//    Route::delete('/{id}',   [CameraController::class, 'destroy']);
+//});
 
