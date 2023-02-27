@@ -18,10 +18,14 @@ class PersonalCarController extends Controller
     {
         $cars = PersonalCar::with(['brand', 'model'])->orderBy('year', 'desc')->get();
 
-        return view('personalcars/index', [
-            'title' => 'Personal Cars',
-            'cars' => $cars,
-        ]);
+//        return view('personalcars/index', [
+//            'title' => 'Personal Cars',
+//            'cars' => $cars,
+//        ]);
+
+        return view('personalcars/index')
+            ->with('title', 'Personal Cars')
+            ->with('cars', $cars);
     }
 
     /**

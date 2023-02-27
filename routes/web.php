@@ -557,3 +557,9 @@ Route::resource('cameras', CameraController::class);
 //    Route::delete('/{id}',   [CameraController::class, 'destroy']);
 //});
 
+/** -----------------------------------------------------------------------------------------------------------------
+ * Share Data With All Views - Data stored in AppServiceProvider
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/share-data-with-all-views', function () {
+    return view('share-data-with-all-views.index');
+});
