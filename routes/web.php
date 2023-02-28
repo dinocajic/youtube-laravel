@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Http\Controllers\AnotherDependencyInjectionController;
 use App\Http\Controllers\MiddlewareTestController;
 use App\Http\Controllers\CameraController;
+use App\Http\Controllers\FastCarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -563,3 +564,9 @@ Route::resource('cameras', CameraController::class);
 Route::get('/share-data-with-all-views', function () {
     return view('share-data-with-all-views.index');
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * View Composer
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/fast-cars', [FastCarController::class, 'index']);
+Route::get('/fast-cars/{car}', [FastCarController::class, 'show']);
