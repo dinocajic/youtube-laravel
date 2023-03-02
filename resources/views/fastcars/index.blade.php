@@ -1,4 +1,4 @@
-<h1>Cars</h1>
+<h1>Cars 1</h1>
 
 <ul>
     @foreach($cars as $car)

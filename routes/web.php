@@ -15,6 +15,7 @@ use App\Http\Controllers\AnotherDependencyInjectionController;
 use App\Http\Controllers\MiddlewareTestController;
 use App\Http\Controllers\CameraController;
 use App\Http\Controllers\FastCarController;
+use App\Http\Controllers\JsonRenderingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -570,3 +571,8 @@ Route::get('/share-data-with-all-views', function () {
  * ----------------------------------------------------------------------------------------------------------------- */
 Route::get('/fast-cars', [FastCarController::class, 'index']);
 Route::get('/fast-cars/{car}', [FastCarController::class, 'show']);
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Rendering JSON in Blade
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/json-rendering', [JsonRenderingController::class, 'index']);
