@@ -576,3 +576,10 @@ Route::get('/fast-cars/{car}', [FastCarController::class, 'show']);
  * Rendering JSON in Blade
  * ----------------------------------------------------------------------------------------------------------------- */
 Route::get('/json-rendering', [JsonRenderingController::class, 'index']);
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Environmental Directives in Blade
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/env-test', function () {
+    return view('env-test.index');
+});
