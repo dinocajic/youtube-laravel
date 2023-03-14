@@ -583,3 +583,18 @@ Route::get('/json-rendering', [JsonRenderingController::class, 'index']);
 Route::get('/env-test', function () {
     return view('env-test.index');
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Conditional Styling in Blade
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/conditional-styling', function () {
+    return view('conditional-styling.ifdirective', ['showRed' => true]);
+});
+
+Route::get('/conditional-styling-two', function () {
+    return view('conditional-styling.ifelsedirective', ['color' => 'blue']);
+});
+
+Route::get('/conditional-styling-three', function () {
+    return view('conditional-styling.styleclassdirective', ['isActive' => true]);
+});
