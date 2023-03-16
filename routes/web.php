@@ -598,3 +598,15 @@ Route::get('/conditional-styling-two', function () {
 Route::get('/conditional-styling-three', function () {
     return view('conditional-styling.styleclassdirective', ['isActive' => true]);
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Directive Test
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/directive-test', function () {
+    return view('html-directives.index', [
+        'isActiveVar' => true,
+        'cars' => \App\Models\Car::all(),
+        'user' => User::find(1),
+        'isRequired' => true,
+    ]);
+});
