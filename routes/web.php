@@ -617,3 +617,10 @@ Route::get('/directive-test', function () {
 Route::get('/custom-directive', function () {
     return view('custom-directive.index');
 });
+
+/** -----------------------------------------------------------------------------------------------------------------
+ * Slots
+ * ----------------------------------------------------------------------------------------------------------------- */
+Route::get('/blade-slots', function () {
+    return view('blade-slots.index');
+});
